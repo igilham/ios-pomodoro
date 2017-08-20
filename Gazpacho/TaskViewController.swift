@@ -95,8 +95,10 @@ class TaskViewController : UITableViewController {
             if title != nil {
                 if let est = Int(estimate!) {
                     self.addNewTask(task: Task(title: title!, estimate: est))
+                    NSLog("Added task with title: " + title! + ", estimate: " + String(est))
                 } else {
                     self.addNewTask(task: Task(title: title!))
+                    NSLog("Added task with title: " + title!)
                 }
             }
             
