@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		E62257ED1F49A65100270A63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62257EC1F49A65100270A63 /* AppDelegate.swift */; };
-		E62257EF1F49A65100270A63 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62257EE1F49A65100270A63 /* FirstViewController.swift */; };
-		E62257F11F49A65100270A63 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62257F01F49A65100270A63 /* SecondViewController.swift */; };
-		E62257F41F49A65100270A63 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E62257F21F49A65100270A63 /* Main.storyboard */; };
 		E62257F61F49A65100270A63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E62257F51F49A65100270A63 /* Assets.xcassets */; };
 		E62257F91F49A65100270A63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E62257F71F49A65100270A63 /* LaunchScreen.storyboard */; };
 		E62258041F49A65100270A63 /* GazpachoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62258031F49A65100270A63 /* GazpachoTests.swift */; };
+		E62258101F49A80800270A63 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E622580F1F49A80800270A63 /* Settings.swift */; };
+		E62258121F49A86700270A63 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62258111F49A86700270A63 /* Task.swift */; };
+		E62258141F49AB5900270A63 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E62258131F49AB5900270A63 /* Main.storyboard */; };
+		E62258161F49AFD200270A63 /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62258151F49AFD200270A63 /* TaskViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,15 +30,16 @@
 /* Begin PBXFileReference section */
 		E62257E91F49A65100270A63 /* Gazpacho.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gazpacho.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E62257EC1F49A65100270A63 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E62257EE1F49A65100270A63 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		E62257F01F49A65100270A63 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
-		E62257F31F49A65100270A63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E62257F51F49A65100270A63 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E62257F81F49A65100270A63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E62257FA1F49A65100270A63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E62257FF1F49A65100270A63 /* GazpachoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GazpachoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E62258031F49A65100270A63 /* GazpachoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GazpachoTests.swift; sourceTree = "<group>"; };
 		E62258051F49A65100270A63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E622580F1F49A80800270A63 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		E62258111F49A86700270A63 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		E62258131F49AB5900270A63 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		E62258151F49AFD200270A63 /* TaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,12 +82,13 @@
 			isa = PBXGroup;
 			children = (
 				E62257EC1F49A65100270A63 /* AppDelegate.swift */,
-				E62257EE1F49A65100270A63 /* FirstViewController.swift */,
-				E62257F01F49A65100270A63 /* SecondViewController.swift */,
-				E62257F21F49A65100270A63 /* Main.storyboard */,
 				E62257F51F49A65100270A63 /* Assets.xcassets */,
 				E62257F71F49A65100270A63 /* LaunchScreen.storyboard */,
 				E62257FA1F49A65100270A63 /* Info.plist */,
+				E622580F1F49A80800270A63 /* Settings.swift */,
+				E62258111F49A86700270A63 /* Task.swift */,
+				E62258131F49AB5900270A63 /* Main.storyboard */,
+				E62258151F49AFD200270A63 /* TaskViewController.swift */,
 			);
 			path = Gazpacho;
 			sourceTree = "<group>";
@@ -182,9 +185,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E62258141F49AB5900270A63 /* Main.storyboard in Resources */,
 				E62257F91F49A65100270A63 /* LaunchScreen.storyboard in Resources */,
 				E62257F61F49A65100270A63 /* Assets.xcassets in Resources */,
-				E62257F41F49A65100270A63 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,9 +205,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E62257F11F49A65100270A63 /* SecondViewController.swift in Sources */,
 				E62257ED1F49A65100270A63 /* AppDelegate.swift in Sources */,
-				E62257EF1F49A65100270A63 /* FirstViewController.swift in Sources */,
+				E62258161F49AFD200270A63 /* TaskViewController.swift in Sources */,
+				E62258101F49A80800270A63 /* Settings.swift in Sources */,
+				E62258121F49A86700270A63 /* Task.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,14 +231,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		E62257F21F49A65100270A63 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E62257F31F49A65100270A63 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E62257F71F49A65100270A63 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -412,6 +408,7 @@
 				E622580A1F49A65100270A63 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E622580B1F49A65100270A63 /* Build configuration list for PBXNativeTarget "GazpachoTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +417,7 @@
 				E622580D1F49A65100270A63 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
