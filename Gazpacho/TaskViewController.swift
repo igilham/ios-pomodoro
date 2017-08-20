@@ -13,22 +13,18 @@ class TaskViewController : UITableViewController {
     
     private var tasks: [Task] = [Task]()
     
-    override func numberOfSections(in tableView: UITableView) -> Int
-    {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tasks.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-    {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell_task", for: indexPath)
         
-        if indexPath.row < tasks.count
-        {
+        if indexPath.row < tasks.count {
             let item = tasks[indexPath.row]
             cell.textLabel?.text = item.title
             
@@ -39,12 +35,10 @@ class TaskViewController : UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-    {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        if indexPath.row < tasks.count
-        {
+        if indexPath.row < tasks.count {
             let item = tasks[indexPath.row]
             item.complete = !item.complete
             
@@ -52,10 +46,8 @@ class TaskViewController : UITableViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
-    {
-        if indexPath.row < tasks.count
-        {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if indexPath.row < tasks.count {
             tasks.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .top)
         }
@@ -71,8 +63,7 @@ class TaskViewController : UITableViewController {
         }
     }
     
-    func didTapAddTaskButton(_ sender: UIBarButtonItem)
-    {
+    func didTapAddTaskButton(_ sender: UIBarButtonItem) {
         // TODO: an alert is not really good enough for string plus number input.
         // Create an alert
         let alert = UIAlertController(
@@ -101,18 +92,13 @@ class TaskViewController : UITableViewController {
                     NSLog("Added task with title: " + title!)
                 }
             }
-            
-//            if let description = alert.textFields?[0].text {
-//                self.addNewTask(description: description)
-//            }
         }))
         
         // Present the alert to the user
         self.present(alert, animated: true, completion: nil)
     }
     
-    private func addNewTask(task: Task)
-    {
+    private func addNewTask(task: Task) {
         // The index of the new item will be the current item count
         let newIndex = tasks.count
         
