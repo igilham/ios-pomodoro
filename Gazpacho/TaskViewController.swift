@@ -11,7 +11,7 @@ import UIKit
 
 class TaskViewController : UITableViewController {
     
-    private var tasks = Task.getMockData()
+    private var tasks: [Task] = [Task]()
     
     override func numberOfSections(in tableView: UITableView) -> Int
     {
@@ -30,7 +30,7 @@ class TaskViewController : UITableViewController {
         if indexPath.row < tasks.count
         {
             let item = tasks[indexPath.row]
-            cell.textLabel?.text = item.description
+            cell.textLabel?.text = item.title
             
             let accessory: UITableViewCellAccessoryType = item.complete ? .checkmark : .none
             cell.accessoryType = accessory
@@ -61,6 +61,16 @@ class TaskViewController : UITableViewController {
         }
     }
     
+    @objc
+    public func applicationDidEnterBackground(_ notification: NSNotification) {
+        do {
+            try tasks.writeToPersistence()
+        }
+        catch let error {
+            NSLog("Error writing to persistence: \(error)")
+        }
+    }
+    
     func didTapAddTaskButton(_ sender: UIBarButtonItem)
     {
         // TODO: an alert is not really good enough for string plus number input.
@@ -79,14 +89,14 @@ class TaskViewController : UITableViewController {
         
         // Add a "OK" button to the alert. The handler calls addNewToDoItem()
         alert.addAction(UIAlertAction(title: "Add", style: .default, handler: { (_) in
-            let description = alert.textFields?[0].text
+            let title = alert.textFields?[0].text
             let estimate = alert.textFields?[1].text
             
-            if description != nil {
+            if title != nil {
                 if let est = Int(estimate!) {
-                    self.addNewTask(task: Task(description: description!, estimate: est))
+                    self.addNewTask(task: Task(title: title!, estimate: est))
                 } else {
-                    self.addNewTask(task: Task(description: description!))
+                    self.addNewTask(task: Task(title: title!))
                 }
             }
             
@@ -113,8 +123,39 @@ class TaskViewController : UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NSLog("View loaded - initialising app data")
         self.title = "Tasks"
+        
+        // Add an 'Add' button to the task list view
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(TaskViewController.didTapAddTaskButton(_:)))
+        
+        // Setup a notification to let us know when the app is about to close,
+        // and that we should store the user items to persistence. This will call the
+        // applicationDidEnterBackground() function in this class
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(UIApplicationDelegate.applicationDidEnterBackground(_:)),
+            name: NSNotification.Name.UIApplicationDidEnterBackground,
+            object: nil)
+        
+        do {
+            // Try to load from persistence
+            NSLog("Attempting to load persistent data")
+            self.tasks = try [Task].readFromPersistence()
+        }
+        catch let error as NSError {
+            if error.domain == NSCocoaErrorDomain && error.code == NSFileReadNoSuchFileError {
+                NSLog("No persistence file found, not necesserially an error...")
+            } else {
+                let alert = UIAlertController(
+                    title: "Error",
+                    message: "Could not load the stored tasks!",
+                    preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                NSLog("Error loading from persistence: \(error)")
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
