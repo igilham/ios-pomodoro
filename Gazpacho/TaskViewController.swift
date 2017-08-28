@@ -21,12 +21,14 @@ class TaskViewController : UITableViewController {
         return tasks.count
     }
     
+    // Populate table view row with data from the model object
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell_task", for: indexPath)
         
         if indexPath.row < tasks.count {
             let item = tasks[indexPath.row]
             cell.textLabel?.text = item.title
+            cell.detailTextLabel?.text = "estimate: " + String(item.estimate) + ", elapsed: " + String(item.elapsed)
             
             let accessory: UITableViewCellAccessoryType = item.complete ? .checkmark : .none
             cell.accessoryType = accessory
@@ -35,6 +37,7 @@ class TaskViewController : UITableViewController {
         return cell
     }
     
+    // Tap on a row
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
@@ -46,6 +49,7 @@ class TaskViewController : UITableViewController {
         }
     }
     
+    // Swipe and tap to delete a row
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if indexPath.row < tasks.count {
             tasks.remove(at: indexPath.row)
@@ -63,6 +67,7 @@ class TaskViewController : UITableViewController {
         }
     }
     
+    // Add new task
     func didTapAddTaskButton(_ sender: UIBarButtonItem) {
         // TODO: an alert is not really good enough for string plus number input.
         // Create an alert
@@ -105,7 +110,7 @@ class TaskViewController : UITableViewController {
         // Create new item and add it to the todo items list
         tasks.append(task)
         
-        // Tell the table view a new row has been created
+        // Insert new row in the table view
         tableView.insertRows(at: [IndexPath(row: newIndex, section: 0)], with: .top)
     }
     
