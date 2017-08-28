@@ -15,6 +15,7 @@
 		E62258121F49A86700270A63 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62258111F49A86700270A63 /* Task.swift */; };
 		E62258141F49AB5900270A63 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E62258131F49AB5900270A63 /* Main.storyboard */; };
 		E62258161F49AFD200270A63 /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62258151F49AFD200270A63 /* TaskViewController.swift */; };
+		E6255B8B1F5452EC00EF5F12 /* PomodoroTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6255B8A1F5452EC00EF5F12 /* PomodoroTimerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		E62258111F49A86700270A63 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		E62258131F49AB5900270A63 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E62258151F49AFD200270A63 /* TaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
+		E6255B8A1F5452EC00EF5F12 /* PomodoroTimerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PomodoroTimerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 				E62258111F49A86700270A63 /* Task.swift */,
 				E62258131F49AB5900270A63 /* Main.storyboard */,
 				E62258151F49AFD200270A63 /* TaskViewController.swift */,
+				E6255B8A1F5452EC00EF5F12 /* PomodoroTimerViewController.swift */,
 			);
 			path = Gazpacho;
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6255B8B1F5452EC00EF5F12 /* PomodoroTimerViewController.swift in Sources */,
 				E62257ED1F49A65100270A63 /* AppDelegate.swift in Sources */,
 				E62258161F49AFD200270A63 /* TaskViewController.swift in Sources */,
 				E62258101F49A80800270A63 /* Settings.swift in Sources */,

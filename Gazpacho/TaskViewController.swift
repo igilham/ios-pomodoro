@@ -39,22 +39,22 @@ class TaskViewController : UITableViewController {
     
     // Tap on a row
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        NSLog("Tapped on index " + String(indexPath.row) + ", task: " + tasks[indexPath.row].title)
         tableView.deselectRow(at: indexPath, animated: true)
         
         if indexPath.row < tasks.count {
             let item = tasks[indexPath.row]
             if !item.complete {
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: "PomodoroTimer")
-                self.navigationController?.pushViewController(vc!, animated: true)
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "PomodoroTimer") as! PomodoroTimerViewController
+                vc.task = item
+                self.navigationController?.pushViewController(vc, animated: true)
             }
-            
-//            item.complete = !item.complete
-//            tableView.reloadRows(at: [indexPath], with: .automatic)
         }
     }
     
     // Swipe and tap to delete a row
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        NSLog("Deleting task: " + tasks[indexPath.row].title)
         if indexPath.row < tasks.count {
             tasks.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .top)
@@ -73,6 +73,11 @@ class TaskViewController : UITableViewController {
     
     // Add new task
     func didTapAddTaskButton(_ sender: UIBarButtonItem) {
+        // TODO: modal popup dialog
+//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "NewTask")
+//        self.navigationController?.pushViewController(vc!, animated: true)
+        
+        
         // TODO: an alert is not really good enough for string plus number input.
         // Create an alert
         let alert = UIAlertController(
