@@ -30,7 +30,7 @@ class TaskViewController : UITableViewController {
             cell.textLabel?.text = item.title
             cell.detailTextLabel?.text = "estimate: " + String(item.estimate) + ", elapsed: " + String(item.elapsed)
             
-            let accessory: UITableViewCellAccessoryType = item.complete ? .checkmark : .none
+            let accessory: UITableViewCellAccessoryType = item.complete ? .checkmark : .disclosureIndicator
             cell.accessoryType = accessory
         }
         
@@ -43,9 +43,13 @@ class TaskViewController : UITableViewController {
         
         if indexPath.row < tasks.count {
             let item = tasks[indexPath.row]
-            item.complete = !item.complete
+            if !item.complete {
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "PomodoroTimer")
+                self.navigationController?.pushViewController(vc!, animated: true)
+            }
             
-            tableView.reloadRows(at: [indexPath], with: .automatic)
+//            item.complete = !item.complete
+//            tableView.reloadRows(at: [indexPath], with: .automatic)
         }
     }
     
@@ -80,7 +84,7 @@ class TaskViewController : UITableViewController {
         alert.addTextField(configurationHandler: nil)
         alert.addTextField(configurationHandler: nil)
         
-        // Add a "cancel" button to the alert. No handler required
+        // Add a "Cancel" button to the alert. No handler required
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
         // Add a "OK" button to the alert. The handler calls addNewToDoItem()
@@ -107,19 +111,18 @@ class TaskViewController : UITableViewController {
         // The index of the new item will be the current item count
         let newIndex = tasks.count
         
-        // Create new item and add it to the todo items list
+        // Insert new row in the model and table view
         tasks.append(task)
-        
-        // Insert new row in the table view
         tableView.insertRows(at: [IndexPath(row: newIndex, section: 0)], with: .top)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         NSLog("View loaded - initialising app data")
-        self.title = "Tasks"
+        // the root view should hide the back button
+        self.navigationItem.hidesBackButton = true
         
-        // Add an 'Add' button to the task list view
+        // Add an 'Add' button to the task list view and hook up to a handler function
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(TaskViewController.didTapAddTaskButton(_:)))
         
         // Setup a notification to let us know when the app is about to close,
