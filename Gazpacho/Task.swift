@@ -31,10 +31,10 @@ class Task : NSObject, NSCoding {
     // implement NSCoding protocol
     required init?(coder aDecoder: NSCoder) {
         // Try to deserialize the "description" variable
+        // error if any field is missing
         if let title = aDecoder.decodeObject(forKey: "title") as? String {
             self.title = title
         } else {
-            // error if field is missing
             return nil
         }
         
