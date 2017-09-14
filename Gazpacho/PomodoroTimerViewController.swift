@@ -43,6 +43,11 @@ class PomodoroTimerViewController : UIViewController {
         disableMarkDoneToggle()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        // prevent leaking a timer and it's interrupts when hiding the view
+        pause()
+    }
+    
     // initialise any non-default fields
     func initFields() {
         // TODO: make the max period configurable to support breaks etc.
