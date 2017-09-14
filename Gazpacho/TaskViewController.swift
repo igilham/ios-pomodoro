@@ -12,6 +12,7 @@ import UIKit
 class TaskViewController : UITableViewController {
     
     private var tasks: [Task] = [Task]()
+    @IBOutlet var tasksTableView: UITableView!
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -139,8 +140,23 @@ class TaskViewController : UITableViewController {
             name: NSNotification.Name.UIApplicationDidEnterBackground,
             object: nil)
         
+        loadDataFromPersistence()
+    }
+    
+    // when view appears
+    override func viewDidAppear(_ animated: Bool) {
+        // update task table to reflect model changes
+        self.tasksTableView!.reloadData()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    // Try to load from persistence
+    func loadDataFromPersistence() {
         do {
-            // Try to load from persistence
             NSLog("Attempting to load persistent data")
             self.tasks = try [Task].readFromPersistence()
         }
@@ -157,11 +173,6 @@ class TaskViewController : UITableViewController {
                 NSLog("Error loading from persistence: \(error)")
             }
         }
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 }

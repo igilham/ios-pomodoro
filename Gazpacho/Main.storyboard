@@ -49,6 +49,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Tasks" id="Ezn-jv-QfG"/>
+                    <connections>
+                        <outlet property="tasksTableView" destination="IC6-Sx-sQu" id="oZD-fB-zIh"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AvQ-do-1ce" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
