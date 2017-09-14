@@ -8,8 +8,9 @@
 
 import Foundation
 
+// All times are in seconds
 struct Settings {
-    let workDuration = 25 * 60 * 1000
-    let restDuration = 5 * 60 * 1000
-    let longRestDuration = 30 * 60 * 1000
+    let workDuration: TimeInterval = 25 * 60
+    let restDuration: TimeInterval = 5 * 60
+    let longRestDuration: TimeInterval = 30 * 60
 }
